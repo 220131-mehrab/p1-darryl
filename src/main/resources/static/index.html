@@ -7,6 +7,12 @@
 </head>
 <body>
 <h1>Welcome</h1>
+<form action="/patients" method="post">
+    Id: <input type="number" name="patientId" id="patientId"/>
+    Name: <input type="text" name="name" id="name"/>
+    <button type="button" onclick="postPatient()">Add Patient</button>
+</form>
+<div id="patients"></div>
 <script src="main.js"></script>
 </body>
 </html>
