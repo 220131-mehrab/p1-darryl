@@ -31,8 +31,8 @@ CREATE TABLE "contactInfo" (
     "1stEmergencyContact1Number" INT,
     "2ndEmergencyContactName" VARCHAR,
     "2ndEmergencyContactNumber" INT,
-    CONSTRAINT "PK_patientInfo" PRIMARY KEY ("RegistrationDate"),
-    CONSTRAINT "FK_patientInfoPatientId" FOREIGN KEY ("PatientId") REFERENCES "patient" ("PatientId") ON DELETE NO ACTION ON UPDATE NO ACTION
+    CONSTRAINT "PK_contactInfo" PRIMARY KEY ("PrimaryPhone"),
+    CONSTRAINT "FK_contactInfoPatientId" FOREIGN KEY ("PatientId") REFERENCES "patient" ("PatientId") ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
 CREATE INDEX "IFK_patientInfoPatientId" ON "patientInfo" ("PatientId");

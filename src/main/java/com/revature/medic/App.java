@@ -61,7 +61,7 @@ public class App {
         //String url = "jdbc:h2:mem:test;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;INIT=runscript from 'classpath:schema.sql'";
         String url = "jdbc:postgresql://localhost:5432/postgres";
         String username = "postgres";
-        String password = "somePassword";
+        String password = "postgres";
         Connection connection = DriverManager.getConnection(
                 url, username, password);
 

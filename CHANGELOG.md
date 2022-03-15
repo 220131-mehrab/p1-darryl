@@ -17,3 +17,14 @@ Friday, 3/11/2022
 <hr>
 
 ```
+Monday, 3/13/2022
+```
+<ul>
+<li>Connected postgres properly with docker
+<li>Fixed multiple oversights in schema.sql file</li>
+<li>Plan to fix input functionality next</li>
+<li>First working version</li>
+</ul>
+<hr>
+
+```
