@@ -37,6 +37,7 @@ function postPatient() {
             document.querySelector('#patients').innerHTML = listPatients(patients);
         }
     );
+    window.document.location.reload();
 }
 
 let button = document.querySelector('button');

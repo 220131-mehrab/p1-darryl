@@ -1,5 +1,4 @@
 CREATE TABLE "patient" (
-    "Image" VARBINARY,
     "PatientId" INT PRIMARY KEY NOT NULL,
     "FirstName" VARCHAR NOT NULL,
     "MiddleName" VARCHAR,
