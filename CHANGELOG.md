@@ -28,3 +28,19 @@ Monday, 3/13/2022
 <hr>
 
 ```
+Tuesday, 3/15/2022
+```
+<ul>
+<li>Began refactoring javascript and adding search function
+</ul>
+<hr>
+
+```
+Thursday, 3/17/2022
+```
+<ul>
+<li>Trying to get adding to actually work now
+</ul>
+<hr>
+
+```

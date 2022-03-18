@@ -1,5 +1,13 @@
 package com.revature.medic;
 
+import java.sql.SQLException;
+
+public class App {
+    public static void main(String[] args) throws SQLException {
+        Server server = new Server();
+        server.run();
+    }
+}/*
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -125,4 +133,4 @@ public class App {
             System.err.println("Failed to start server: " + e.getMessage());
         }
     }
-}
+}*/
