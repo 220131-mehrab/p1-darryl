@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<br><div style="text-align: center;"><h1>Welcome</h1>
+    <form action="/patients" method="post">
+        <table class="glass" style="margin:auto;">
+            <tr>
+                <td>Id:</td>
+                <td><input type="number" name="patientId" id="patientId" class="input" placeholder="0"/></td>
+            </tr>
+            <tr>
+                <td>First Name:</td>
+                <td><input type="text" name="firstName" id="firstName" class="input" placeholder="Big"/></td>
+            </tr>
+            <tr>
+                <td>Middle Name:</td>
+                <td><input type="text" name="middleName" id="middleName" class="input" placeholder="Body"/></td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td><input type="text" name="lastName" id="lastName" class="input" placeholder="Benz"/></td>
+            </tr>
+
+        </table><br><td><button class="glass" id="entry" type="button" onclick="postPatient()">Add Patient</button></td>
+    </form>
+</div>
+<div>
+<table id="display">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Last Name</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+</div>
+
+<div id="patientsDiv"></div>
+<script src="addPatient.js"></script>
+</body>
+</html>

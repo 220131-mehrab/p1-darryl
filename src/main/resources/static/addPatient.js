@@ -1,12 +1,8 @@
-//main.js is not used, but I plan to keep it and store all js functions here
-
-/*var welcomeMsg = 'Medic App';
-document.querySelector('h1').innerText = welcomeMsg;*/
-
-//Display function below. allPatients.js is just this isolated
 fetch('/patients').then(resp => resp.json()).then(patients => {
-    document.querySelector('#patientsDiv').innerHTML = listPatients(patients);
-});
+        document.querySelector('#patientsDiv').innerHTML = listPatients(patients);
+    }
+);
+
 function listPatients(json) {
     return `${json.map(listPatient).join('\n')}`;
 }
@@ -14,18 +10,22 @@ function listPatients(json) {
 let listPatient = function(patient) {
     return '<p>' + patient.patientId + ": " + patient.firstName + ": " + patient.middleName + ": " + patient.lastName + '</p>';
 }
-function addPatientButton(goToUrl) {
+
+function goToButton(goToUrl) {
     window.location.href=goToUrl;
 }
 
-//addPatient can be just this isolated, but currently has display function above. May replace it with a 'view patients' button in it that links to /allPatients
+function myFunction() {
+    document.body.style.backgroundColor = "black";
+}
+
 function postPatient() {
     let patient = {
-            "patientId": document.getElementById("patientId").value,
-            "firstName": document.getElementById("firstName").value,
-            "middleName": document.getElementById("middleName").value,
-            "lastName": document.getElementById("lastName").value
-        }
+        "patientId": document.getElementById("patientId").value,
+        "firstName": document.getElementById("firstName").value,
+        "middleName": document.getElementById("middleName").value,
+        "lastName": document.getElementById("lastName").value
+    }
     console.log(patient);
     fetch("/patients", {
         method: "POST",
@@ -45,4 +45,13 @@ function postPatient() {
         }
     );
     window.document.location.reload();
-}*/
+}
+
+// Creates the mouse hover event to the add patient/insert button
+let button = document.querySelector('button');
+    button.addEventListener('mouseover',function() {
+            button.textContent = "insert";
+    })
+    button.addEventListener('mouseout',function() {
+        button.textContent="Add Patient";
+    })

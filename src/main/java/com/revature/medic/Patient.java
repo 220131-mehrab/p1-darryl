@@ -3,32 +3,58 @@ package com.revature.medic;
 public class Patient {
     private int patientId;
     private String firstName;
+    private String middleName;
+    private String lastName;
 
-    public Patient(int id, String name) {
-        patientId = id;
-        firstName = name;
+    public Patient(int patientId, String firstName, String middleName, String lastName) {
+        this.patientId = patientId;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
     }
 
-    public Patient(){}
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "patientId=" + patientId +
+                ", firstName=" + firstName +
+                ", middleName=" + middleName +
+                ", lastName=" + lastName +
+                '}';
+    }
 
     public int getPatientId() {
         return patientId;
+    }
+
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setPatientId(int id) {
-        patientId = id;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setFirstName(String name) {
-        firstName = name;
+    public String getMiddleName() {
+        return middleName;
     }
 
-    @Override
-    public String toString() {
-        return "Team [teamId=" + patientId + ", name=" + firstName + "]";
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
     }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Patient(){}
+
 }

@@ -44,3 +44,34 @@ Thursday, 3/17/2022
 <hr>
 
 ```
+Friday, 3/18/2022
+```
+<ul>
+<li>Working version
+<li>main.js is not used, just kept for storing all js functions
+<li>patients.html no longer used. Will delete later
+<li>Need to branch from source material before commit
+</ul>
+<hr>
+
+```
+Sunday, 3/20/2022
+```
+<ul>
+<li>Working version
+<li>Middle and Last Name working
+</ul>
+<hr>
+
+```
+Monday, 3/21/2022
+```
+<ul>
+<li>No progress made after hours attempting table and edit/delete functiionality
+<li>Forgot to make jar file
+<li>Test file added, no working tests
+<li>Committing
+</ul>
+<hr>
+
+```

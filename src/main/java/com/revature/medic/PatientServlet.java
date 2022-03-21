@@ -1,5 +1,5 @@
 package com.revature.medic;
-
+import com.revature.medic.Patient;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,51 +26,40 @@ public class PatientServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Patient> patients = new ArrayList<>();
-        String searchId = req.getParameter("patientId");
-
-        if (searchId == null) {
-            try {
-                ResultSet rs = connection.prepareStatement("select * from Patient").executeQuery();
-
-                while (rs.next()) {
-                    patients.add(new Patient(rs.getInt("patientId"), rs.getString("firstName")));
-                }
-            } catch (SQLException e) {
-                System.err.println("Failed to retrieve from db: " + e.getSQLState());
+        try {
+            ResultSet rs = connection.prepareStatement("select * from patient").executeQuery();
+            while (rs.next()) {
+                Patient patientToAdd = new Patient(rs.getInt("PatientId"),rs.getString("FirstName"),rs.getString("MiddleName"),rs.getString("LastName"));
+                patients.add(patientToAdd);
             }
-        } else {
-            try {
-                PreparedStatement stmt = connection.prepareStatement("select * from Patient where patientId = ?");
-                stmt.setString(1, searchId);
-
-                ResultSet rs = stmt.executeQuery();
-                while (rs.next())
-                    patients.add(new Patient(rs.getInt("patientId"), rs.getString("firstName")));
-            } catch (SQLException e) {
-                System.err.println("Failed to retrieve from db: " + e.getSQLState());
-            }
+        } catch (SQLException e) {
+            System.err.println("Failed to retrieve from db: " + e.getSQLState());
         }
-
-        // Object Mapper
+        // Get JSON mapper
         ObjectMapper mapper = new ObjectMapper();
         String results = mapper.writeValueAsString(patients);
         resp.setContentType("application/json");
         resp.getWriter().println(results);
     }
-
+    /**
+     * An override method set up to insert data into the memory database by the user. Used for "Add Patient" functionality.
+     * @param req a http request sent from the server to insert the specified fields into the database table.
+     * @param resp a http response to the server, adding the fields to the table and printing them to the server.
+     * @throws ServletException if this error occurs, it throws the error back to the calling method rather than handling it here.
+     * @throws IOException if this error occurs, it throws it back to the method that called it.
+     */
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         Patient newPatient = mapper.readValue(req.getInputStream(), Patient.class);
-
         try {
-            PreparedStatement stmt = connection.prepareStatement("insert into Patient values(?, ?)");
+            PreparedStatement stmt = connection.prepareStatement("insert into patient values (?,?, ?, ?)");
             stmt.setInt(1, newPatient.getPatientId());
             stmt.setString(2, newPatient.getFirstName());
+            stmt.setString(3, newPatient.getMiddleName());
+            stmt.setString(4, newPatient.getLastName());
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.err.println("Failed to insert: " + e.getMessage());

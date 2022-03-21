@@ -26,7 +26,7 @@ public class Server {
         server.getConnector();
         server.addContext("", null);
 
-        // Defualt Servlet
+        // Default Servlet
         server.addServlet(webAppName, "defaultServlet", new DefaultServlet()).addMapping("/*");
 
         // Patient Servlet
@@ -37,6 +37,8 @@ public class Server {
                 url, username, password);
 
         server.addServlet(webAppName, "patientServlet", new PatientServlet(connection)).addMapping("/patients");
+        server.addServlet(webAppName, "addPatient", new AddPatient(connection)).addMapping("/addPatient");
+        server.addServlet(webAppName, "allPatients", new AllPatients(connection)).addMapping("/allPatients");
     }
 
     /**
@@ -45,6 +47,10 @@ public class Server {
     public void run() {
         try {
             server.start();
+            System.out.println("Server is running on http://localhost:" + server.getConnector().getLocalPort() + "/addPatient.html");
+            System.out.println();
+            System.out.println("Server is running on http://localhost:" + server.getConnector().getLocalPort() + "/index.html");
+            server.getServer().await();
         } catch (LifecycleException e) {
             System.err.println("Failed to start server: " + e.getMessage());
         }
