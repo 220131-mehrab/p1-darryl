@@ -67,8 +67,6 @@ Sunday, 3/20/2022
 Monday, 3/21/2022
 ```
 <ul>
-<li>No progress made after hours attempting table and edit/delete functiionality
-<li>Forgot to make jar file
 <li>Test file added, no working tests
 <li>Committing
 </ul>
